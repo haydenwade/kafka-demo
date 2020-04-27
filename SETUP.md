@@ -28,5 +28,7 @@
 
 #### References
 [Apache Kafka Quickstart](https://kafka.apache.org/quickstart)
+
 [npm kafka-node](https://www.npmjs.com/package/kafka-node)
+
 [simplesteph/kafka-stack-docker-compose](https://github.com/simplesteph/kafka-stack-docker-compose)
