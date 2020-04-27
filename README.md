@@ -14,4 +14,4 @@ How to setup kafka locally (macOS), example producer and consumers using `kafka-
 
 ## Overview on Kafka
 - [OVERVIEW.md](https://github.com/haydenwade/kafka-demo/blob/master/SETUP.md#setup-kafka-locally-macos)
-- As [PDF](https://github.com/haydenwade/kafka-demo/blob/master/Kafka%20Overview.pdf) 
+- As [PDF](https://github.com/haydenwade/kafka-demo/blob/master/Kafka%20Overview.pdf) with images!
