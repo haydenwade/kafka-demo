@@ -3,7 +3,7 @@ const config = require('./config');
 try {
     const topicsToCreate = [{
         topic: config.kafka_topic,
-        partitions: config.kafka_topic_partions,
+        partitions: config.kafka_topic_partitions,
         replicationFactor: config.kafka_topic_replicas
     }
     ];

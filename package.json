@@ -8,8 +8,8 @@
     "producer-morgan": "node producer.js morganfreeman",
     "producer": "node producer.js",
     "consumer": "node consumer.js",
-    "consumer-cats": "node consumerGroup.js cats",
-    "consumer-justin": "node consumerGroup.js justin"
+    "consumer-cats": "node consumer.js cats",
+    "consumer-justin": "node consumer.js justin"
   },
   "author": "",
   "license": "ISC",

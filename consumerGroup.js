@@ -1,3 +1,4 @@
+// does not create a consumer group as expected - Did not research further why
 const kafka = require('kafka-node');
 const config = require('./config');
 
@@ -13,11 +14,8 @@ try {
     protocol: ['roundrobin'],
   },config.kafka_topic);
 
-
-  const c = cg; //switch between consumer group and consumer
-
   console.log(`consumer ${keyword ? keyword:''} started`);
-  c.on('message', async function(message) {
+  cg.on('message', async function(message) {
     if(keyword){
       if(message.value.includes(keyword)){
         console.log(`OMG, ${keyword}: ${message.value}`);
@@ -26,7 +24,7 @@ try {
       console.log(message.value);
     }
   })
-  c.on('error', function(err) {
+  cg.on('error', function(err) {
     console.log('error', err);
   });
 }
