@@ -13,8 +13,9 @@ try {
     client.createTopics(topicsToCreate, (error, result) => {
         if (error) {
             console.log('error occurred creating topic', error);
+            return;
         }
-        console.log(result);
+        console.log('success',result);
     })
 }
 catch (e) {

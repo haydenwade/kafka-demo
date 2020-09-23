@@ -10,7 +10,9 @@ const username = process.argv.slice(2)[0] || 'nobody';
 
 // create producer instance
 Producer = kafka.Producer,
-  client = new kafka.KafkaClient({ kafkaHost: config.kafka_server }),
+  client = new kafka.KafkaClient({ 
+    kafkaHost: config.kafka_server
+   }),
   producer = new Producer(client);
 
 let ready = false;
