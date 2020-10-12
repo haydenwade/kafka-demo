@@ -9,11 +9,14 @@
     "producer": "node producer.js",
     "consumer": "node consumer.js",
     "consumer-cats": "node consumer.js cats",
-    "consumer-justin": "node consumer.js justin"
+    "consumer-justin": "node consumer.js justin",
+    "cg-x": "node consumerGroup.js x",
+    "cg-y": "node consumerGroup.js yummy"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "kafka-node": "^5.0.0"
+    "kafka-node": "^5.0.0",
+    "uuid": "^8.3.1"
   }
 }

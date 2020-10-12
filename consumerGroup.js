@@ -8,10 +8,11 @@ try {
   const ConsumerGroup = kafka.ConsumerGroup;
   
   let cg = new ConsumerGroup({
-    groupId:`retweet-${keyword}`,
+    groupId:`retweet-cg-${keyword}`,
     kafkaHost:config.kafka_server,
     fromOffset: 'latest',
     protocol: ['roundrobin'],
+    id:`retween-cd-${keyword}`
   },config.kafka_topic);
 
   console.log(`consumer ${keyword ? keyword:''} started`);

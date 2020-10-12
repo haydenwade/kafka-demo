@@ -1,5 +1,6 @@
 const kafka = require('kafka-node');
 const config = require('./config');
+const { v4: uuidv4 } = require('uuid');
 
 const rl = require('readline').createInterface({
   input: process.stdin,
@@ -8,12 +9,23 @@ const rl = require('readline').createInterface({
 
 const username = process.argv.slice(2)[0] || 'nobody';
 
-// create producer instance
+let count = -1;
+
+// create producer instance with custom partitioner
 Producer = kafka.Producer,
-  client = new kafka.KafkaClient({ 
+  client = new kafka.KafkaClient({
     kafkaHost: config.kafka_server
-   }),
-  producer = new Producer(client);
+  }),
+  producer = new Producer(client, {
+    partitionerType: 4  //set to 2 for cyclic aka DefaultPartitioner (round robin)
+  }, () => {
+    count++;
+    if (count % 3 === 0) {
+      return 0;
+    } else {
+      return 1;
+    }
+  });
 
 let ready = false;
 const kafka_topic = config.kafka_topic;
