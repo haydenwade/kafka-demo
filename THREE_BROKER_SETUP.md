@@ -26,6 +26,24 @@ bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 3 -
 
 //describe topic
 bin/kafka-topics.sh --describe --zookeeper localhost:2181 --topic tweets
+bin/kafka-topics.sh --describe --bootstrap-server localhost:9092 --topic tweets
+
+//describe topic config overrides
+bin/kafka-configs.sh --bootstrap-server localhost:9092 --entity-type topics --entity-name tweets --describe
+
+//add topic config override
+bin/kafka-configs.sh --bootstrap-server localhost:9092 --entity-type topics --entity-name tweets --alter --add-config retention.ms=1
+bin/kafka-configs.sh --zookeeper <zkhost>:2181 --entity-type topics --alter --entity-name <topic name> --add-config retention.ms=1000 //purge topic
+
+//remove topic config override
+bin/kafka-configs.sh --bootstrap-server localhost:9092  --entity-type topics --entity-name tweets --alter --delete-config retention.ms
+
+
+//delete topic
+bin/kafka-topics.sh --zookeeper localhost:2181 --delete --topic tweets
+bin/kafka-topics.sh --bootstrap-server localhost:9092 --delete --topic tweets
+
+
 
 //create topic with partitions and replicas and max message size
 bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 3 --partitions 3 --topic tweets2 --config max.message.bytes=8000
