@@ -1,6 +1,6 @@
 const retry = require('async-await-retry');
 
-const withRetry =  async(
+const getRetryHandler =  async(
   kafkaJsClientInstance,
   retryTopicName,
   actionHandler,
@@ -8,6 +8,7 @@ const withRetry =  async(
 ) => {
   const producer = kafkaJsClientInstance.producer();
   await producer.connect();
+
   return async (originalData) => {
     try {
       const resp = await retry(actionHandler, [originalData], {
@@ -21,7 +22,7 @@ const withRetry =  async(
     } catch (err) {
       console.log('Producing to retry queue');
       try{
-
+        // throw new Error('hahahahah') //to test that we NAK on producing errors
         await producer.send({
           topic: retryTopicName,
           messages: [{
@@ -30,6 +31,8 @@ const withRetry =  async(
         });
       }catch(error){
         console.log('failed to produce to retry topic')
+        //NAK?
+        throw error;
       }
     
     }
@@ -76,7 +79,8 @@ const run = async () => {
     await consumer.subscribe({ topic: config.topics[0].topic });
 
 
-    const handlerWithRetry = await withRetry(kafka, config.topics[1].topic, handleMessage);
+    const handlerWithRetry = await getRetryHandler(kafka, config.topics[1].topic, handleMessage);
+
     await consumer.run({
       eachMessage: handlerWithRetry,
     });
