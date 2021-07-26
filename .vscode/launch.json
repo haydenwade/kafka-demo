@@ -7,11 +7,11 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
+            "name": "Kafkajs Consumer",
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/producer.js",
+            "program": "${workspaceFolder}/kafkajs/consumer.js",
             "args":["v"]
         }
     ]

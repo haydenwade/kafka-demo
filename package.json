@@ -16,7 +16,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "async-await-retry": "^1.2.2",
     "kafka-node": "^5.0.0",
+    "kafkajs": "^1.15.0",
     "uuid": "^8.3.1"
   }
 }
