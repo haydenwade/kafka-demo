@@ -78,10 +78,7 @@ const run = async () => {
 
     const handlerWithRetry = await withRetry(kafka, config.topics[1].topic, handleMessage);
     await consumer.run({
-      // eachMessage: handleMessage,
-      // eachMessage: x
       eachMessage: handlerWithRetry,
-
     });
   } catch (err) {
     console.log(err);
